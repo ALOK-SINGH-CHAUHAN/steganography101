@@ -35,7 +35,8 @@ from werkzeug.utils import secure_filename
 from steganography import Steganography
 import uuid
 
-app = Flask(__name__)
+basedir = os.path.abspath(os.path.dirname(__file__))
+app = Flask(__name__, template_folder=os.path.join(basedir, 'templates'))
 app.secret_key = os.environ.get('SESSION_SECRET', 'dev-secret-key-change-in-production')
 
 UPLOAD_FOLDER = 'uploads'
